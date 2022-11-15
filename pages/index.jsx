@@ -106,7 +106,7 @@ export default function Home() {
                     flexDirection: 'column'
                 }}
             >
-                <Box>
+                <Box sx={{ display: 'none' }}>
                     <Title order={1}> PARKI </Title>
                     <Title order={6}> Interiors </Title>
                 </Box>
