@@ -1,6 +1,13 @@
 import { Carousel } from "@mantine/carousel";
 import useStyles from "../styles/guest";
-import { Box, Grid, Image, Title, useMantineTheme } from "@mantine/core";
+import {
+    Box,
+    Grid,
+    Image,
+    MediaQuery,
+    Title,
+    useMantineTheme,
+} from "@mantine/core";
 import { useMediaQuery } from "@mantine/hooks";
 
 import slide1 from "../public/images/slider-1.png";
@@ -50,7 +57,6 @@ const data = [
         title: "E-Check 98",
         category: "Teppi",
     },
-    
 ];
 
 export default function Home() {
@@ -66,42 +72,101 @@ export default function Home() {
 
     return (
         <Box>
-            <AwesomeSlider
-                bullets={false}
-                style={{ height: 790 }}
-                cssModule={[CoreStyles, AnimationStyles]}
-                animation="fallAnimation"
+            <MediaQuery smallerThan="sm" styles={{ height: 0 }}>
+                <AwesomeSlider
+                    bullets={false}
+                    cssModule={[CoreStyles, AnimationStyles]}
+                    animation="fallAnimation"
+                    mobileTouch={true}
+                    className={classes.awesomeSlider}
+                >
+                    <div>
+                        <Image
+                            width={"auto"}
+                            className={classes.homepageCoverImage}
+                            src={slide1.src}
+                        />
+                    </div>
+                    <div>
+                        <Image width={"auto"} src={slide2.src} />
+                    </div>
+                    <div>
+                        <Image src={slide3.src} />
+                    </div>
+                </AwesomeSlider>
+            </MediaQuery>
+            <MediaQuery
+                smallerThan="sm"
+                styles={{
+                    height: 500,
+                    textAlign: "center",
+                    alignItems: "center",
+                    display: "flex",
+                    justifyContent: "center",
+                    flexDirection: 'column'
+                }}
             >
-                <div>
-                    <Image src={slide1.src} />
-                </div>
-                <div>
-                    <Image src={slide2.src} />
-                </div>
-                <div>
-                    <Image src={slide3.src} />
-                </div>
-            </AwesomeSlider>
+                <Box>
+                    <Title order={1}> PARKI </Title>
+                    <Title order={6}> Interiors </Title>
+                </Box>
+            </MediaQuery>
 
             <Grid className={classes.homepageCategories}>
-                <Grid.Col md={8} sm={12} sx={{padding: 0}}>
-                    <Link className={classes.homepageImageFeatureMain} href={'/'}>
-                        <Title order={3} className={classes.homepageImageTitle}>Parket</Title>
-                        <Image width='100%' height={780} fit="cover" src={parket.src} />
+                <Grid.Col md={8} sm={12} sx={{ padding: 0 }}>
+                    <Link
+                        className={classes.homepageImageFeatureMain}
+                        href={"/"}
+                    >
+                        <Title order={3} className={classes.homepageImageTitle}>
+                            Parket
+                        </Title>
+                        <Image
+                            width="100%"
+                            height={780}
+                            fit="cover"
+                            src={parket.src}
+                        />
                     </Link>
                 </Grid.Col>
                 <Grid.Col md={4} sm={12}>
                     <Grid>
-                        <Grid.Col md={12} sm={12} sx={{padding: 0}}>
-                            <Link className={classes.homepageImageSecond} href={'/'}>
-                                <Title order={3} className={classes.homepageImageTitle}>Harðparket</Title>
-                                <Image width='100%' height={390} fit="cover" src={hardParket.src} />
+                        <Grid.Col md={12} sm={12} sx={{ padding: 0 }}>
+                            <Link
+                                className={classes.homepageImageSecond}
+                                href={"/"}
+                            >
+                                <Title
+                                    order={3}
+                                    className={classes.homepageImageTitle}
+                                >
+                                    Harðparket
+                                </Title>
+                                <Image
+                                    width="100%"
+                                    height={390}
+                                    fit="cover"
+                                    src={hardParket.src}
+                                />
                             </Link>
                         </Grid.Col>
-                        <Grid.Col md={12} sm={12} sx={{padding: 0}}>
-                            <Link className={classes.homepageImageSecond} href={'/'}>
-                                <Title order={3} className={classes.homepageImageTitle}>Vínylefni</Title>
-                                <Image width='100%' height={390} fit="cover" src={vinylParket.src} />
+                        <Grid.Col md={12} sm={12} sx={{ padding: 0 }}>
+                            <Link
+                                className={classes.homepageImageSecond}
+                                href={"/"}
+                            >
+                                <Title
+                                    order={3}
+                                    className={classes.homepageImageTitle}
+                                >
+                                    Vínylefni
+                                </Title>
+                                <Image
+                                    width="100%"
+                                    height={390}
+                                    fit="cover"
+                                    src={vinylParket.src}
+                                />
                             </Link>
                         </Grid.Col>
                     </Grid>
@@ -109,66 +174,130 @@ export default function Home() {
             </Grid>
 
             <Grid sx={{ marginBottom: 40 }}>
-                
-                <Grid.Col md={4} sm={12} sx={{padding: 0}}>
-                    <Link className={classes.homepageImageSecond} href={'/'}>
-                        <Title order={3} className={classes.homepageImageTitle}>Flísar</Title>
-                        <Image width='100%' height={390} fit="cover" src={cat4.src} />
+                <Grid.Col md={4} sm={12} sx={{ padding: 0 }}>
+                    <Link className={classes.homepageImageSecond} href={"/"}>
+                        <Title order={3} className={classes.homepageImageTitle}>
+                            Flísar
+                        </Title>
+                        <Image
+                            width="100%"
+                            height={390}
+                            fit="cover"
+                            src={cat4.src}
+                        />
                     </Link>
                 </Grid.Col>
-                <Grid.Col md={4} sm={12} sx={{padding: 0}}>
-                    <Link className={classes.homepageImageSecond} href={'/'}>
-                        <Title order={3} className={classes.homepageImageTitle}>Teppi</Title>
-                        <Image width='100%' height={390} fit="cover" src={cat5.src} />
+                <Grid.Col md={4} sm={12} sx={{ padding: 0 }}>
+                    <Link className={classes.homepageImageSecond} href={"/"}>
+                        <Title order={3} className={classes.homepageImageTitle}>
+                            Teppi
+                        </Title>
+                        <Image
+                            width="100%"
+                            height={390}
+                            fit="cover"
+                            src={cat5.src}
+                        />
                     </Link>
                 </Grid.Col>
-                <Grid.Col md={4} sm={12} sx={{padding: 0}}>
-                    <Link className={classes.homepageImageSecond} href={'/'}>
-                        <Title order={3} className={classes.homepageImageTitle}>Stigahúsateppi</Title>
-                        <Image width='100%' height={390} fit="cover" src={cat6.src} />
+                <Grid.Col md={4} sm={12} sx={{ padding: 0 }}>
+                    <Link className={classes.homepageImageSecond} href={"/"}>
+                        <Title order={3} className={classes.homepageImageTitle}>
+                            Stigahúsateppi
+                        </Title>
+                        <Image
+                            width="100%"
+                            height={390}
+                            fit="cover"
+                            src={cat6.src}
+                        />
                     </Link>
                 </Grid.Col>
-                
-                <Grid.Col md={4} sm={12} sx={{padding: 0}}>
-                    <Link className={classes.homepageImageSecond} href={'/'}>
-                        <Title order={3} className={classes.homepageImageTitle}>Kerfisloft</Title>
-                        <Image width='100%' height={390} fit="cover" src={cat7.src} />
+
+                <Grid.Col md={4} sm={12} sx={{ padding: 0 }}>
+                    <Link className={classes.homepageImageSecond} href={"/"}>
+                        <Title order={3} className={classes.homepageImageTitle}>
+                            Kerfisloft
+                        </Title>
+                        <Image
+                            width="100%"
+                            height={390}
+                            fit="cover"
+                            src={cat7.src}
+                        />
                     </Link>
                 </Grid.Col>
-                <Grid.Col md={4} sm={12} sx={{padding: 0}}>
-                    <Link className={classes.homepageImageSecond} href={'/'}>
-                        <Title order={3} className={classes.homepageImageTitle}>Dúkaloft</Title>
-                        <Image width='100%' height={390} fit="cover" src={cat8.src} />
+                <Grid.Col md={4} sm={12} sx={{ padding: 0 }}>
+                    <Link className={classes.homepageImageSecond} href={"/"}>
+                        <Title order={3} className={classes.homepageImageTitle}>
+                            Dúkaloft
+                        </Title>
+                        <Image
+                            width="100%"
+                            height={390}
+                            fit="cover"
+                            src={cat8.src}
+                        />
                     </Link>
                 </Grid.Col>
-                <Grid.Col md={4} sm={12} sx={{padding: 0}}>
-                    <Link className={classes.homepageImageSecond} href={'/'}>
-                        <Title order={3} className={classes.homepageImageTitle}>Hurðir</Title>
-                        <Image width='100%' height={390} fit="cover" src={cat9.src} />
+                <Grid.Col md={4} sm={12} sx={{ padding: 0 }}>
+                    <Link className={classes.homepageImageSecond} href={"/"}>
+                        <Title order={3} className={classes.homepageImageTitle}>
+                            Hurðir
+                        </Title>
+                        <Image
+                            width="100%"
+                            height={390}
+                            fit="cover"
+                            src={cat9.src}
+                        />
                     </Link>
                 </Grid.Col>
-                
-                <Grid.Col md={4} sm={12} sx={{padding: 0}}>
-                    <Link className={classes.homepageImageSecond} href={'/'}>
-                        <Title order={3} className={classes.homepageImageTitle}>Innréttingar</Title>
-                        <Image width='100%' height={390} fit="cover" src={cat10.src} />
+
+                <Grid.Col md={4} sm={12} sx={{ padding: 0 }}>
+                    <Link className={classes.homepageImageSecond} href={"/"}>
+                        <Title order={3} className={classes.homepageImageTitle}>
+                            Innréttingar
+                        </Title>
+                        <Image
+                            width="100%"
+                            height={390}
+                            fit="cover"
+                            src={cat10.src}
+                        />
                     </Link>
                 </Grid.Col>
-                <Grid.Col md={4} sm={12} sx={{padding: 0}}>
-                    <Link className={classes.homepageImageSecond} href={'/'}>
-                        <Title order={3} className={classes.homepageImageTitle}>Persía mottur</Title>
-                        <Image width='100%' height={390} fit="cover" src={cat11.src} />
+                <Grid.Col md={4} sm={12} sx={{ padding: 0 }}>
+                    <Link className={classes.homepageImageSecond} href={"/"}>
+                        <Title order={3} className={classes.homepageImageTitle}>
+                            Persía mottur
+                        </Title>
+                        <Image
+                            width="100%"
+                            height={390}
+                            fit="cover"
+                            src={cat11.src}
+                        />
                     </Link>
                 </Grid.Col>
-                <Grid.Col md={4} sm={12} sx={{padding: 0}}>
-                    <Link className={classes.homepageImageSecond} href={'/'}>
-                        <Title order={3} className={classes.homepageImageTitle}>Veggfóður</Title>
-                        <Image width='100%' height={390} fit="cover" src={cat12.src} />
+                <Grid.Col md={4} sm={12} sx={{ padding: 0 }}>
+                    <Link className={classes.homepageImageSecond} href={"/"}>
+                        <Title order={3} className={classes.homepageImageTitle}>
+                            Veggfóður
+                        </Title>
+                        <Image
+                            width="100%"
+                            height={390}
+                            fit="cover"
+                            src={cat12.src}
+                        />
                     </Link>
                 </Grid.Col>
             </Grid>
 
-            <Title order={1} sx={{ textAlign: 'center', marginBottom: 40 }}>Featured Products</Title>
+            <Title order={1} sx={{ textAlign: "center", marginBottom: 40 }}>
+                Featured Products
+            </Title>
 
             <Carousel
                 slideSize="30%"

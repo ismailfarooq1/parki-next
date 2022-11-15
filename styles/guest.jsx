@@ -81,6 +81,17 @@ const useStyles = createStyles((theme) => ({
         color: 'white',
         textTransform: 'uppercase'
     },
+    homepageCoverImage: {
+        objectFit: 'cover',
+        objectPosition: 'center',
+    },
+    awesomeSlider: {
+        height: 780,
+        // display: 'block',
+        // [`@media (max-width: ${theme.breakpoints.sm}px)`]: {
+        //     display: 'none',
+        // }
+    }
 }));
 
 export default useStyles;
